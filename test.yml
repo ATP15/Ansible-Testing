@@ -1,0 +1,22 @@
+- name: Test local connection
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: test default connection
+      command: whoami
+      register: result
+    - debug: msg="default connection={{ result.stdout }}"
+    
+    - name: test local connection
+      command: whoami
+      connection: local
+      register: result
+    - debug: msg="local connection={{ result.stdout }}"
+
+    - name: test default connection after setting connection to local
+      command: whoami
+      register: result
+    - debug: msg="default connection again={{ result.stdout }}"
+
+
