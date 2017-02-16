@@ -1,2 +1,4 @@
- -hosts: all
-  became: yes
+- hosts: all
+  tasks:
+  - name: test connection
+    ping:
